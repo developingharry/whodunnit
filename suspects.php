@@ -11,14 +11,14 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT id, username, email FROM detectives";
+$sql = "SELECT id, forename, surname, alive, guilt FROM suspects";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
-    echo "Detectives:<br>";
+    echo "Suspects:<br>";
     while($row = $result->fetch_assoc()) {
-        echo $row["id"]. " - Name: " . $row["username"]. " " ." - Email: ". $row["email"]. "<br>";
+        echo $row["id"]. ". " . $row["forename"]. " " .$row["surname"]. " : ".$row["alive"]." + ".$row["guilt"]."<br>";
     }
 } else {
     echo "0 results";

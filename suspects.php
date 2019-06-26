@@ -1,15 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "whodunnit";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+include("includes/header.php");
 
 $sql = "SELECT id, forename, surname, alive, guilt FROM suspects";
 $result = $conn->query($sql);

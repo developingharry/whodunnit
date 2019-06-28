@@ -14,4 +14,8 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 $conn->close();
+
+// $date_now = (new DateTime())->format('Y-m-d');
+// echo $date_now;
+
 ?>

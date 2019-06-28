@@ -2,6 +2,11 @@
 include("includes/header.php");
 
 echo "<h1>GOD POWER PAGE</h1>";
+echo "<hr>";
+echo "today's date is ".$today->format('d-m-y')."<br>";
+echo "end date is ".$endDate->format('d-m-y')."<br>";
+echo "max available score is ".$maxAvailableScore->format('%d')."<hr>";
+
 $sql = "SELECT id, forename, surname, alive, guilt, alivepic, deadpic FROM suspects";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {

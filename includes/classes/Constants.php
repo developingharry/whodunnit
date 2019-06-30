@@ -8,6 +8,8 @@
         public static $usernameCharacters = "Your username must be between 4 and 25 characters";
         public static $usernameTaken = "This username is already in use.";
         public static $emailTaken = "This email address is already in use.";
+
+        public static $loginFailed = "Your username or password was incorrect";
     }
 ?>
 

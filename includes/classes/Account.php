@@ -43,12 +43,11 @@
 
         private function insertUserDetails($un,$em,$pw) {
             $encryptedPw = md5($pw);
-            $profilePic = "assets/images/profile-pics/defaultpfp.jpg";
             $date = date("Y-m-d");
             $currentPick = "";
             $streak = "";
 
-            $result = mysqli_query($this->conn, "INSERT INTO detectives VALUES ('','$un','$em','$encryptedPw','$date','$profilePic','$currentPick','$streak')");
+            $result = mysqli_query($this->conn, "INSERT INTO detectives VALUES ('','$un','$em','$encryptedPw','$date','$currentPick','$streak')");
 
             return $result;
         }

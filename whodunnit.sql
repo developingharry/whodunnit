@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2019 at 05:48 PM
+-- Generation Time: Jun 30, 2019 at 10:11 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -34,7 +34,6 @@ CREATE TABLE `detectives` (
   `email` varchar(200) NOT NULL,
   `password` varchar(32) NOT NULL,
   `signUpDate` datetime NOT NULL,
-  `profilePic` varchar(500) NOT NULL,
   `currentPick` int(11) NOT NULL,
   `streak` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -43,9 +42,9 @@ CREATE TABLE `detectives` (
 -- Dumping data for table `detectives`
 --
 
-INSERT INTO `detectives` (`id`, `username`, `email`, `password`, `signUpDate`, `profilePic`, `currentPick`, `streak`) VALUES
-(1, 'UncleGabby', 'harry.hunt@gmail.com', '8a4ffa74ed5e34e70c67fea81d243a5f', '2019-06-30 00:00:00', 'assets/images/profile-pics/defaultpfp.jpg', 0, 0),
-(2, 'UncleGabby2', 'harry.hunt@gmail.com', '338d811d532553557ca33be45b6bde55', '2019-06-30 00:00:00', 'assets/images/profile-pics/defaultpfp.jpg', 0, 0);
+INSERT INTO `detectives` (`id`, `username`, `email`, `password`, `signUpDate`, `currentPick`, `streak`) VALUES
+(3, 'CaptainMaak', 'harry.hunt@gmail.com', '9aee390f19345028f03bb16c588550e1', '2019-06-30 00:00:00', 0, 0),
+(4, 'Dharma', 'ferry.hunt@gmail.com', '9aee390f19345028f03bb16c588550e1', '2019-06-30 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -69,7 +68,7 @@ CREATE TABLE `suspects` (
 
 INSERT INTO `suspects` (`id`, `forename`, `surname`, `alive`, `guilt`, `alivepic`, `deadpic`) VALUES
 (1, 'Mary', 'Arbuthnot', 1, 0, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),
-(2, 'Colonel', 'MacQueen', 0, 0, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),
+(2, 'Colonel', 'MacQueen', 1, 0, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),
 (3, 'Hector', 'Dragomiroff', 1, 1, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),
 (4, 'Princess', 'Hubbard', 1, 0, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),
 (5, 'Mrs', 'Ohisson', 1, 0, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),
@@ -105,7 +104,7 @@ ALTER TABLE `suspects`
 -- AUTO_INCREMENT for table `detectives`
 --
 ALTER TABLE `detectives`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `suspects`

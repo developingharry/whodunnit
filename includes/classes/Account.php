@@ -1,9 +1,12 @@
 <?php
     class Account {
 
+        private $conn;
+
         private $errorArray;
 
-        public function __construct() {
+        public function __construct($conn) {
+            $this->conn = $conn;
             $this->errorArray=array();
         }
 
@@ -14,7 +17,7 @@
 
             if(empty($this->errorArray)) {
                 //insert into db
-                return true;
+                return $this->insertUserDetails($un,$em,$pw);
             } else {
                 return false;
             }
@@ -26,43 +29,63 @@
             }
             return "<span class='errorMessage'>$error</span>";
         }
+
+        private function insertUserDetails($un,$em,$pw) {
+            $encryptedPw = md5($pw);
+            $profilePic = "assets/images/profile-pics/defaultpfp.jpg";
+            $date = date("Y-m-d");
+            $currentPick = "";
+            $streak = "";
+
+            $result = mysqli_query($this->conn, "INSERT INTO detectives VALUES ('','$un','$em','$encryptedPw','$date','$profilePic','$currentPick','$streak')");
+
+            return $result;
+        }
             
         private function validateUsername($un) {
             if(strlen($un) > 25 || strlen($un) < 4) {
-                array_push($this->errorArray, "Your username must be between 4 and 25 characters");
+                array_push($this->errorArray, Constants::$usernameCharacters);
                 return;
             }
 
-            //TODO - check if username exists
+            $checkUsernameQuery = mysqli_query($this->conn, "SELECT username FROM detectives WHERE username='$un'");
+            if(mysqli_num_rows($checkUsernameQuery) != 0) {
+                array_push($this->errorArray, Constants::$usernameTaken);
+                return;
+            }
         }
     
         private function validateEmails($em, $em2) {
             if($em != $em2) {
-                array_push($this->errorArray, "Your emails don't match");
+                array_push($this->errorArray, Constants::$emailsDontMatch);
                 return;
             }
 
             if(!filter_var($em, FILTER_VALIDATE_EMAIL)) {
-                array_push($this->errorArray, "Email is invalid");
+                array_push($this->errorArray, Constants::$emailInvalid);
                 return;
             }
 
-            //TODO - check if email exists
+            $checkEmailQuery = mysqli_query($this->conn, "SELECT email FROM detectives WHERE email='$em'");
+            if(mysqli_num_rows($checkEmailQuery) != 0) {
+                array_push($this->errorArray, Constants::$emailTaken);
+                return;
+            }
         }
     
         private function validatePasswords($pw, $pw2) {
             if($pw != $pw2) {
-                array_push($this->errorArray, "Your passwords don't match");
+                array_push($this->errorArray, Constants::$passwordsDontMatch);
                 return;
             }
 
             if(preg_match('/[^A-Za-z0-9]/',$pw)) {
-                array_push($this->errorArray, "Your passwords can only contain numbers and letters");
+                array_push($this->errorArray, Constants::$passwordNotAlphanumeric);
                 return;
             }
 
             if(strlen($pw) > 40 || strlen($pw) < 6) {
-                array_push($this->errorArray, "Your password must be between 6 and 40 characters");
+                array_push($this->errorArray, Constants::$passwordCharacters);
                 return;
             }
 

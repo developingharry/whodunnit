@@ -25,7 +25,7 @@
         $email = sanitizeFormEmail($_POST['email']);
         $email2 = sanitizeFormEmail($_POST['email2']);
         $password = sanitizeFormPassword($_POST['password']);
-        $password2 = sanitizeFormPassword($_POST['password']);
+        $password2 = sanitizeFormPassword($_POST['password2']);
 
         $wasSuccessful = $account->register($username,$email,$email2,$password,$password2);
 

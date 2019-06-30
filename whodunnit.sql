@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2019 at 08:19 PM
+-- Generation Time: Jun 30, 2019 at 05:48 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -33,9 +33,9 @@ CREATE TABLE `detectives` (
   `username` varchar(25) NOT NULL,
   `email` varchar(200) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `joined` datetime NOT NULL,
-  `profile_picture` varchar(500) NOT NULL,
-  `current_pick` varchar(50) NOT NULL,
+  `signUpDate` datetime NOT NULL,
+  `profilePic` varchar(500) NOT NULL,
+  `currentPick` int(11) NOT NULL,
   `streak` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -43,9 +43,9 @@ CREATE TABLE `detectives` (
 -- Dumping data for table `detectives`
 --
 
-INSERT INTO `detectives` (`id`, `username`, `email`, `password`, `joined`, `profile_picture`, `current_pick`, `streak`) VALUES
-(1, 'Sherlock Holmes', 'sherlock@holmes.com', 'password', '2019-06-24 00:00:00', 'sadas', 'Mr Poobs', 3),
-(2, 'Meitantei Conan', 'edogawa@conan.com', 'kljlkj', '2019-06-08 00:00:00', 'sdfs', 'sdf', 1);
+INSERT INTO `detectives` (`id`, `username`, `email`, `password`, `signUpDate`, `profilePic`, `currentPick`, `streak`) VALUES
+(1, 'UncleGabby', 'harry.hunt@gmail.com', '8a4ffa74ed5e34e70c67fea81d243a5f', '2019-06-30 00:00:00', 'assets/images/profile-pics/defaultpfp.jpg', 0, 0),
+(2, 'UncleGabby2', 'harry.hunt@gmail.com', '338d811d532553557ca33be45b6bde55', '2019-06-30 00:00:00', 'assets/images/profile-pics/defaultpfp.jpg', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -69,8 +69,8 @@ CREATE TABLE `suspects` (
 
 INSERT INTO `suspects` (`id`, `forename`, `surname`, `alive`, `guilt`, `alivepic`, `deadpic`) VALUES
 (1, 'Mary', 'Arbuthnot', 1, 0, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),
-(2, 'Colonel', 'MacQueen', 1, 0, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),
-(3, 'Hector', 'Dragomiroff', 1, 0, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),
+(2, 'Colonel', 'MacQueen', 0, 0, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),
+(3, 'Hector', 'Dragomiroff', 1, 1, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),
 (4, 'Princess', 'Hubbard', 1, 0, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),
 (5, 'Mrs', 'Ohisson', 1, 0, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),
 (6, 'Greta', 'Michel', 1, 0, 'assets/images/alivepic.gif', 'assets/images/deadpic.gif'),

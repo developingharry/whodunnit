@@ -1,4 +1,6 @@
 <?php
+    include("includes/classes/Account.php");
+    $account = new Account();
     include("includes/handlers/register-handler.php");
     include("includes/handlers/login-handler.php");
 ?>
@@ -29,10 +31,13 @@
         <form id="registerForm" action="register.php" method="POST">
             <h2>Create your free account</h2>
             <p>
+                <?php echo $account->getError("Your username must be between 4 and 25 characters"); ?>
                 <label for="username">Username</label>
                 <input id="username" name="username" type="text" placeholder="e.g. HerculePoirot" required>
             </p>
             <p>
+                <?php echo $account->getError("Your emails don't match"); ?>
+                <?php echo $account->getError("Email is invalid"); ?>
                 <label for="email">Email</label>
                 <input id="email" name="email" type="email" placeholder="e.g. hercule@ellezelles.com" required>
             </p>
@@ -41,6 +46,9 @@
                 <input id="email2" name="email2" type="email" placeholder="e.g. hercule@ellezelles.com" required>
             </p>
             <p>
+                <?php echo $account->getError("Your passwords don't match"); ?>
+                <?php echo $account->getError("Your passwords can only contain numbers and letters"); ?>
+                <?php echo $account->getError("Your password must be between 6 and 40 characters"); ?>
                 <label for="password">Password</label>
                 <input id="password" name="password" type="password" placeholder="Your password" required>
             </p>

@@ -16,8 +16,6 @@
         return $inputText;
     }
 
-    function 
-
     if(isset($_POST['loginButton'])) {
         //login button was pressed
     }
@@ -29,6 +27,10 @@
         $password = sanitizeFormPassword($_POST['password']);
         $password2 = sanitizeFormPassword($_POST['password']);
 
+        $wasSuccessful = $account->register($username,$email,$email2,$password,$password2);
 
+        if($wasSuccessful){
+            header("Location: index.php");
+        }
     }
 ?>

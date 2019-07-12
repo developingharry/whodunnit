@@ -3,6 +3,7 @@
 if(isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
 	include("includes/config.php");
 	include("includes/classes/User.php");
+	include("includes/classes/Suspect.php");
 
 	if(isset($_GET['userLoggedIn'])) {
 		$userLoggedIn = new User($conn, $_GET['userLoggedIn']);

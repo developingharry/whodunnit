@@ -1,12 +1,17 @@
 var timer;
 
 function lifeToggle(suspect) {
-    $.post("includes/handlers/ajax/lifeToggle.php", { suspect: suspect})
+    $.post("includes/handlers/ajax/lifeToggle.php", { suspect: suspect});
     window.location.reload();
 }
 
 function guiltToggle(suspect) {
-    $.post("includes/handlers/ajax/guiltToggle.php", { suspect: suspect})
+    $.post("includes/handlers/ajax/guiltToggle.php", { suspect: suspect});
+    window.location.reload();
+}
+
+function vote(suspect,currentPick,username) {
+    $.post("includes/handlers/ajax/vote.php", { suspect: suspect, currentPick: currentPick, username: username});
     window.location.reload();
 }
 

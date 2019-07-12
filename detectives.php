@@ -1,14 +1,15 @@
 <?php
 include("includes/header.php");
 
-$sql = "SELECT id, username, email FROM detectives";
+$sql = "SELECT id, username, email, currentPick FROM detectives";
 $result = $conn->query($sql);
+
 
 if ($result->num_rows > 0) {
     // output data of each row
     echo "Detectives:<br>";
     while($row = $result->fetch_assoc()) {
-        echo $row["id"]. " - Name: " . $row["username"]. " " ." - Email: ". $row["email"]. "<br>";
+        echo $row["id"]. " - Name: " . $row["username"]. " " ." - Email: ". $row["email"]. " CurrentPick: " . $row["currentPick"] . "<br>";
     }
 } else {
     echo "0 results";

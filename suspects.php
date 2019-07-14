@@ -18,9 +18,6 @@ while($row2 = $result2->fetch_assoc()) {
     $currentPick = $row2['currentPick'];
 };
 
-
-
-
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -33,14 +30,16 @@ if ($result->num_rows > 0) {
                         echo $row['id'].",";
                         echo $currentPick.",";
                         echo "\"".$usernamestring."\"";
-                        echo ")'>".'VOTE'."</button><hr>";
+                        echo ")'";
+                        if ($row['id'] == $currentPick) {
+                            echo "disabled>CURRENT PICK";
+                        } else {
+                            echo ">".'VOTE';
+                        }
+                        echo "</button><hr>";
     }
 } else {
     echo "0 results";
 }
 $conn->close();
 ?>
-
-
-
-document.write("<td width='74'><button id='button' type='button' onclick='myfunction(\""+ name + "\")'>click</button></td>")

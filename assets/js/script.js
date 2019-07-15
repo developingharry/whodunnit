@@ -11,7 +11,7 @@ function guiltToggle(suspect) {
 }
 
 function vote(suspect,currentPick,username) {
-    $.post("includes/handlers/ajax/vote.php", { suspect: suspect, currentPick: currentPick, username: username});
+    $.post("includes/handlers/ajax/vote.php", { suspect: suspect, currentPick: currentPick, username: username, guilt: guilt});
     window.location.reload();
 }
 

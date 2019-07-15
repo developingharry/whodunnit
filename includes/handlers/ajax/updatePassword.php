@@ -1,5 +1,5 @@
 <?php
-include("../../config.php");
+include("../../mysqli_connect.php");
 
 if(!isset($_POST['username'])) {
 	echo "ERROR: Could not set username";
@@ -23,7 +23,7 @@ $newPassword2 = $_POST['newPassword2'];
 
 $oldMd5 = md5($oldPassword);
 
-$passwordCheck = mysqli_query($conn, "SELECT * FROM detectives WHERE username='$username' AND password='$oldMd5'");
+$passwordCheck = mysqli_query($mysqli, "SELECT * FROM detectives WHERE username='$username' AND password='$oldMd5'");
 if(mysqli_num_rows($passwordCheck) != 1) {
 	echo "Password is incorrect";
 	exit();
@@ -46,7 +46,7 @@ if(strlen($newPassword1) > 30 || strlen($newPassword1) < 5) {
 
 $newMd5 = md5($newPassword1);
 
-$query = mysqli_query($conn, "UPDATE detectives SET password='$newMd5' WHERE username='$username'");
+$query = mysqli_query($mysqli, "UPDATE detectives SET password='$newMd5' WHERE username='$username'");
 echo "Update successful";
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-include("includes/config.php");
+include("includes/mysqli_connect.php");
 include("includes/classes/User.php");
 include("includes/classes/Suspect.php");
 
@@ -7,7 +7,7 @@ include("includes/classes/Suspect.php");
 // (logout)
 
 if(isset($_SESSION['userLoggedIn'])) {
-	$userLoggedIn = new User($conn, $_SESSION['userLoggedIn']);
+	$userLoggedIn = new User($mysqli, $_SESSION['userLoggedIn']);
 	$username = $userLoggedIn->getUsername();
 	echo "<script>userLoggedIn = '$username';</script>";
 }

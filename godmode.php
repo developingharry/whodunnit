@@ -8,7 +8,7 @@ echo "end date is ".$endDate->format('d-m-y')."<br>";
 echo "max available score is ".$maxAvailableScore->format('%d')."<hr>";
 
 $sql = "SELECT id, forename, surname, alive, guilt, alivepic, deadpic, votes FROM suspects";
-$result = $conn->query($sql);
+$result = $mysqli->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     echo "<h2>Suspects:</h2>";
@@ -35,5 +35,5 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-$conn->close();
+$mysqli->close();
 ?>

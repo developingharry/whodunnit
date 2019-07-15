@@ -1,12 +1,12 @@
 <?php
     class Account {
 
-        private $conn;
+        private $mysqli;
 
         private $errorArray;
 
-        public function __construct($conn) {
-            $this->conn = $conn;
+        public function __construct($mysqli) {
+            $this->conn = $mysqli;
             $this->errorArray=array();
         }
 

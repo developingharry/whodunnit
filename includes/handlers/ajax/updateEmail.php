@@ -1,5 +1,5 @@
 <?php
-include("../../config.php");
+include("../../mysqli_connect.php");
 
 if(!isset($_POST['username'])) {
 	echo "ERROR: Could not set username";
@@ -16,13 +16,13 @@ if(isset($_POST['email']) && $_POST['email'] != "") {
 		exit();
 	}
 
-	$emailCheck = mysqli_query($conn, "SELECT email FROM detectives WHERE email='$email' AND username != '$username'");
+	$emailCheck = mysqli_query($mysqli, "SELECT email FROM detectives WHERE email='$email' AND username != '$username'");
 	if(mysqli_num_rows($emailCheck) > 0) {
 		echo "Email is already in use";
 		exit();
 	}
 
-	$updateQuery = mysqli_query($conn, "UPDATE detectives SET email = '$email' WHERE username='$username'");
+	$updateQuery = mysqli_query($mysqli, "UPDATE detectives SET email = '$email' WHERE username='$username'");
 	echo "Update successful";
 
 }

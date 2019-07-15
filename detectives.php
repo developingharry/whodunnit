@@ -2,7 +2,7 @@
 include("includes/header.php");
 
 $sql = "SELECT id, username, email, currentPick FROM detectives";
-$result = $conn->query($sql);
+$result = $mysqli->query($sql);
 
 
 if ($result->num_rows > 0) {
@@ -14,7 +14,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-$conn->close();
+$mysqli->close();
 
 // $date_now = (new DateTime())->format('Y-m-d');
 // echo $date_now;

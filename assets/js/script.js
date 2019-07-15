@@ -10,7 +10,7 @@ function guiltToggle(suspect) {
     window.location.reload();
 }
 
-function vote(suspect,currentPick,username) {
+function vote(suspect,currentPick,username,guilt) {
     $.post("includes/handlers/ajax/vote.php", { suspect: suspect, currentPick: currentPick, username: username, guilt: guilt});
     window.location.reload();
 }
